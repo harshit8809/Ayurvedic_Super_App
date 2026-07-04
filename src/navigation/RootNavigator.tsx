@@ -22,7 +22,7 @@ const AppRoutes = () => {
                 />
                 <Stack.Screen name={SCREENS.DOCTOR_DETAILS} component={DoctorDetails}
                     options={{
-                        title: 'Dr. Details',
+                        title: 'Details',
                     }}
                 />
             </Stack.Navigator>

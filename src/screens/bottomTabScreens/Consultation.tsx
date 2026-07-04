@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import {
   ActivityIndicator,
+  Keyboard,
   View,
 } from "react-native";
 import { useDoctors } from "../../customHooks/useDoctors";
@@ -27,10 +28,10 @@ const Consultation = ({ navigation }: any) => {
     setCategory,
   } = useDoctors();
 
-  console.log('doctors--', doctors);
+  // console.log('doctors--', doctors);
 
   const renderDoc = useCallback(({ item }: { item: Doctor }) => (
-    <DoctorCard doctor={item} onPress={() => navigation.navigate(SCREENS.DOCTOR_DETAILS)} />
+    <DoctorCard doctor={item} onPress={() => navigation.navigate(SCREENS.DOCTOR_DETAILS, { doctorId: item.id })} />
   ), []);
 
   return (
@@ -66,6 +67,7 @@ const Consultation = ({ navigation }: any) => {
         ListFooterComponent={
           loading ? <ActivityIndicator /> : null
         }
+        onScroll={() => Keyboard.dismiss()}
       />
     </View>
   );

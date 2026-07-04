@@ -31,16 +31,8 @@ import {
   StyleSheet,
   View,
 } from 'react-native';
-
-import {
-  ShoppingBag,
-  FileText,
-  Stethoscope,
-} from 'lucide-react-native';
-
 import { useAppTheme } from '../../theme/ThemeProvider';
 import SectionHeader from '../../components/section/SectionHeader';
-import AppText from '../../components/AppText';
 import Divider from '../../components/section/Divider';
 import SearchBar from '../../components/elements/SearchBar';
 import QuickActionCard from '../../components/section/home/QuickActionCard';

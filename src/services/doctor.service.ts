@@ -1,3 +1,6 @@
+import { Doctor } from "../types/doctor";
+import { DoctorDetails } from "../types/doctorDetails";
+import { generateDoctorDetails } from "../utils/doctorDetailsGenerator";
 import { generateDoctors } from "../utils/doctorGenerator";
 
 const doctors = generateDoctors();
@@ -44,4 +47,25 @@ export const fetchDoctors = (
             });
         }, 700);
     });
+};
+
+export const fetchDoctorById = (
+  doctorId: string
+): Promise<DoctorDetails> => {
+
+  return new Promise((resolve, reject) => {
+
+    setTimeout(() => {
+      const doctor = doctors.find(
+        item => item.id === doctorId
+      );
+      if (!doctor) {
+        reject("Doctor not found");
+        return;
+      }
+      resolve(
+        generateDoctorDetails(doctor)
+      );
+    }, 500);
+  });
 };
