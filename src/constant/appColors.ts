@@ -1,0 +1,12 @@
+export const APP_COLORS = {
+    PRIMARY: "#2E7D32",
+    SECONDARY: "#4CAF50",
+    BACKGROUND: "#F5F5F5",
+    TEXT_PRIMARY: "#212121",
+    TEXT_SECONDARY: "#757575",
+    BORDER: "#E0E0E0",
+    ERROR: "#F44336",
+    WARNING: "#FF9800",
+    INFO: "#2196F3",
+    SUCCESS: "#4CAF50"
+}

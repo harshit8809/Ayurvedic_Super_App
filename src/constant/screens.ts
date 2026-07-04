@@ -1,0 +1,10 @@
+
+export const SCREENS = {
+    TAB: "TAB",
+    HOME: "HOME",
+    CONSULTATION: "CONSULTATION",
+    SHOP: "SHOP",
+    RECORDS: "RECORDS",
+
+    BOOKING: "BOOKING"
+}
