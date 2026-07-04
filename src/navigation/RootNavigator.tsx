@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { SCREENS } from '../constant/screens'
 import BottomTabs from './BottomTabs'
 import { useAppTheme } from '../theme/ThemeProvider'
+import DoctorDetails from '../screens/consultation/DoctorDetails'
 
 const Stack = createNativeStackNavigator()
 
@@ -19,7 +20,11 @@ const AppRoutes = () => {
                 <Stack.Screen name={SCREENS.TAB} component={BottomTabs}
                     options={{ headerShown: false }}
                 />
-                {/* <Stack.Screen name={SCREENS.BOOKING} component={Booking}/> */}
+                <Stack.Screen name={SCREENS.DOCTOR_DETAILS} component={DoctorDetails}
+                    options={{
+                        title: 'Dr. Details',
+                    }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
 

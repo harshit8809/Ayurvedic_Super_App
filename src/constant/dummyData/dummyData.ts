@@ -24,3 +24,26 @@ export const quickActions = [
     screen: SCREENS.RECORDS,
   },
 ];
+
+export const specializations = [
+  "Cardiologist",
+  "Dermatologist",
+  "Neurologist",
+  "Orthopedic",
+  "Dentist",
+  "General Physician",
+  "ENT",
+  "Ayurvedic",
+];
+
+export const DOCTOR_CATEGORIES = [
+  "All",
+  "Ayurvedic",
+  "ENT",
+  "General Physician",
+  "Cardiologist",
+  "Dermatologist",
+  "Neurologist",
+  "Orthopedic",
+  "Dentist",
+]

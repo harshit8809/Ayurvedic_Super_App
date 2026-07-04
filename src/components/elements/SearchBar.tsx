@@ -3,7 +3,7 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { Search } from 'lucide-react-native';
 import { useAppTheme } from '../../theme/ThemeProvider';
 
-const SearchBar = ({search, setSearch}: any) => {
+const SearchBar = ({ search, setSearch }: any) => {
     const { colors } = useAppTheme();
 
     return (
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 14,
         paddingHorizontal: 14,
-        marginBottom: 30,
+        // marginBottom: 30,
     },
 
     input: {

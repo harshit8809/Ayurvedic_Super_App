@@ -6,5 +6,6 @@ export const SCREENS = {
     SHOP: "SHOP",
     RECORDS: "RECORDS",
 
-    BOOKING: "BOOKING"
+    BOOKING: "BOOKING",
+    DOCTOR_DETAILS: "DOCTOR_DETAILS"
 }

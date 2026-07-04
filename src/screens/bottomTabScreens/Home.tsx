@@ -62,6 +62,7 @@ const HomeScreen = ({ navigation }: any) => {
 
       <GreetingHeader />
       <SearchBar search={search} setSearch={setSearch} />
+      <Divider height={20} />
       <SectionHeader title="Quick Actions" />
       <Divider height={20} />
 
