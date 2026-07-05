@@ -74,3 +74,13 @@ export const times = [
   "03:00 PM",
   "03:30 PM",
 ];
+
+export const PRODUCT_CATEGORIES = [
+  "All",
+  "Medicine",
+  "Supplements",
+  "Ayurveda",
+  "Skin Care",
+  "Hair Care",
+  "Personal Care",
+];

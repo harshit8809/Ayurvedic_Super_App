@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { useAppTheme } from "../theme/ThemeProvider";
 
-const AppText = ({ children, style }: { children: React.ReactNode; style?: any }) => {
+const AppText = ({ children, style, numberOfLines }: any) => {
   const theme = useAppTheme();
 
   return (
@@ -12,6 +12,7 @@ const AppText = ({ children, style }: { children: React.ReactNode; style?: any }
         },
         style,
       ]}
+      numberOfLines={numberOfLines}
     >
       {children}
     </Text>

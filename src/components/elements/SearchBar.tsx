@@ -1,42 +1,56 @@
-import React from 'react';
-import { StyleSheet, TextInput, View } from 'react-native';
-import { Search } from 'lucide-react-native';
+import React, { memo } from 'react';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
+import { Heart, Search } from 'lucide-react-native';
 import { useAppTheme } from '../../theme/ThemeProvider';
 
-const SearchBar = ({ search, setSearch }: any) => {
+const SearchBar = ({ search, setSearch, options, onHeartPress }: any) => {
     const { colors } = useAppTheme();
 
     return (
-        <View
-            style={[
-                styles.container,
-                {
-                    backgroundColor: colors.card,
-                    borderColor: colors.border,
-                },
-            ]}>
-            <Search
-                size={20}
-                color={colors.textSecondary}
-            />
-
-            <TextInput
-                placeholder="Search doctors, medicines..."
-                placeholderTextColor={colors.textSecondary}
-                value={search}
-                onChangeText={setSearch}
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 10 }}>
+            <View
                 style={[
-                    styles.input,
+                    styles.container,
                     {
-                        color: colors.text,
+                        backgroundColor: colors.card,
+                        borderColor: colors.border,
                     },
-                ]}
-            />
+                ]}>
+                <Search
+                    size={20}
+                    color={colors.textSecondary}
+                />
+
+                <TextInput
+                    placeholder="Search doctors, medicines..."
+                    placeholderTextColor={colors.textSecondary}
+                    value={search}
+                    onChangeText={setSearch}
+                    style={[
+                        styles.input,
+                        {
+                            color: colors.text,
+                        },
+                    ]}
+                />
+
+            </View>
+            {options &&
+                <Pressable style={{ backgroundColor: colors.backgroundSecondary, padding: 10, borderRadius: 20, borderWidth: 1, borderColor: colors.border }}
+                    onPress={onHeartPress}
+                >
+                    <Heart
+                        size={22}
+                        color={colors.primary}
+                        fill={colors.primary}
+                    />
+                </Pressable>}
+
         </View>
     );
 };
 
-export default SearchBar;
+export default memo(SearchBar);
 
 const styles = StyleSheet.create({
     container: {
@@ -45,6 +59,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 14,
         paddingHorizontal: 14,
+        flex: 1
         // marginBottom: 30,
     },
 

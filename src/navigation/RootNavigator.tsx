@@ -6,6 +6,8 @@ import BottomTabs from './BottomTabs'
 import { useAppTheme } from '../theme/ThemeProvider'
 import DoctorDetails from '../screens/consultation/DoctorDetails'
 import MyBookings from '../screens/consultation/MyBookings'
+import WishlistScreen from '../screens/shop/WishlistScreen'
+import ProductDetails from '../screens/shop/ProductDetails'
 
 const Stack = createNativeStackNavigator()
 
@@ -30,6 +32,16 @@ const AppRoutes = () => {
                 <Stack.Screen name={SCREENS.MY_BOOKINGS} component={MyBookings}
                     options={{
                         title: 'My Bookings',
+                    }}
+                />
+                <Stack.Screen name={SCREENS.WISHLIST_SCREEN} component={WishlistScreen}
+                    options={{
+                        title: 'Wishlist',
+                    }}
+                />
+                <Stack.Screen name={SCREENS.PRODUCT_DETAILS} component={ProductDetails}
+                    options={{
+                        title: 'Product Details',
                     }}
                 />
             </Stack.Navigator>

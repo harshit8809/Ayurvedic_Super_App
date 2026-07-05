@@ -1,31 +1,81 @@
-// import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-// import React from 'react'
-// import { DOCTOR_CATEGORIES } from '../constant/dummyData/dummyData'
+// import React from "react";
+// import {
+//     FlatList,
+//     StyleSheet,
+//     TouchableOpacity,
+//     View,
+// } from "react-native";
 
-// const CategoryTab = ({ onSelect }: any) => {
+// import { DOCTOR_CATEGORIES } from "../constant/dummyData/dummyData";
+// import AppText from "./AppText";
+// import { APP_COLORS } from "../constant/appColors";
+
+// interface Props {
+//     selected: string;
+//     onSelect: (category: string) => void;
+// }
+
+// const CategoryTab = ({ selected, onSelect }: Props) => {
 //     return (
 //         <View>
 //             <FlatList
-//                 data={DOCTOR_CATEGORIES}
-//                 renderItem={({ item }: any) => (
-//                     <TouchableOpacity style={styles.categoryButton}
-//                         onPress={() => onSelect(item)}
-//                     >
-//                         <Text>{item}</Text>
-//                     </TouchableOpacity>
-//                 )}
 //                 horizontal
+//                 data={DOCTOR_CATEGORIES}
+//                 keyExtractor={(item) => item}
 //                 showsHorizontalScrollIndicator={false}
+//                 renderItem={({ item }) => {
+//                     const isSelected = selected === item;
+
+//                     return (
+//                         <TouchableOpacity
+//                             style={[
+//                                 styles.categoryButton,
+//                                 isSelected && styles.selectedCategory,
+//                             ]}
+//                             onPress={() => onSelect(item)}
+//                         >
+//                             <AppText
+//                                 style={[
+//                                     styles.text,
+//                                     isSelected && styles.selectedText,
+//                                 ]}
+//                             >
+//                                 {item}
+//                             </AppText>
+//                         </TouchableOpacity>
+//                     );
+//                 }}
 //             />
 //         </View>
-//     )
-// }
+//     );
+// };
 
-// export default CategoryTab
+// export default React.memo(CategoryTab);
 
 // const styles = StyleSheet.create({
-//     categoryButton: { padding: 10, backgroundColor: '#f0f0f0', marginRight: 10, borderRadius: 30, minWidth: 80, alignItems: 'center', justifyContent: 'center' }
-// })
+//     categoryButton: {
+//         paddingHorizontal: 16,
+//         paddingVertical: 10,
+//         marginRight: 10,
+//         borderRadius: 25,
+//         backgroundColor: "#EFEFEF",
+//     },
+
+//     selectedCategory: {
+//         backgroundColor: APP_COLORS.PRIMARY,
+//     },
+
+//     text: {
+//         color: APP_COLORS.TEXT_SECONDARY,
+//     },
+
+//     selectedText: {
+//         color: "#FFF",
+//         fontWeight: "600",
+//     },
+// });
+
+
 
 
 import React from "react";
@@ -34,23 +84,30 @@ import {
     StyleSheet,
     TouchableOpacity,
     View,
+    ViewStyle,
 } from "react-native";
 
-import { DOCTOR_CATEGORIES } from "../constant/dummyData/dummyData";
 import AppText from "./AppText";
 import { APP_COLORS } from "../constant/appColors";
 
 interface Props {
+    data: string[];
     selected: string;
-    onSelect: (category: string) => void;
+    onSelect: (value: string) => void;
+    containerStyle?: ViewStyle;
 }
 
-const CategoryTab = ({ selected, onSelect }: Props) => {
+const CategoryTab = ({
+    data,
+    selected,
+    onSelect,
+    containerStyle,
+}: Props) => {
     return (
-        <View>
+        <View style={containerStyle}>
             <FlatList
                 horizontal
-                data={DOCTOR_CATEGORIES}
+                data={data}
                 keyExtractor={(item) => item}
                 showsHorizontalScrollIndicator={false}
                 renderItem={({ item }) => {
@@ -60,14 +117,16 @@ const CategoryTab = ({ selected, onSelect }: Props) => {
                         <TouchableOpacity
                             style={[
                                 styles.categoryButton,
-                                isSelected && styles.selectedCategory,
+                                isSelected &&
+                                    styles.selectedCategory,
                             ]}
                             onPress={() => onSelect(item)}
                         >
                             <AppText
                                 style={[
                                     styles.text,
-                                    isSelected && styles.selectedText,
+                                    isSelected &&
+                                        styles.selectedText,
                                 ]}
                             >
                                 {item}

@@ -13,10 +13,9 @@ import AppText from "../../components/AppText";
 import { FlashList } from "@shopify/flash-list";
 import CategoryTab from "../../components/CategoryTab";
 import { SCREENS } from "../../constant/screens";
-
+import { DOCTOR_CATEGORIES } from "../../constant/dummyData/dummyData";
 
 const Consultation = ({ navigation }: any) => {
-
   const {
     doctors,
     loading,
@@ -43,6 +42,7 @@ const Consultation = ({ navigation }: any) => {
       <Divider height={10} />
 
       <CategoryTab
+        data={DOCTOR_CATEGORIES}
         selected={category}
         onSelect={setCategory}
       />
