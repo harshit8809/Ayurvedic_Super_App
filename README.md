@@ -42,10 +42,8 @@ Implemented features:
 
 Planned (Not Completed):
 
-- Product Details
 - Cart
 - Quantity Update
-- Wishlist
 - Checkout Summary
 - Local Cart Persistence
 
@@ -90,7 +88,7 @@ Major architectural principles:
 - Mock Service Layer
 - Custom Hooks
 - Reusable UI Components
-- Scalable Folder Structure
+- Folder Structure
 
 ---
 
@@ -155,6 +153,8 @@ Major architectural principles:
 - Search
 - Category Filter
 - Responsive Grid Layout
+- Product Details
+- Wishlist
 
 ---
 
@@ -191,16 +191,6 @@ Some reusable UI components developed during the assignment:
 - product.service.ts
 
 These services simulate API behaviour with pagination, filtering, searching and booking logic.
-
----
-
-# 🧪 Unit Testing
-
-Basic Jest test cases were added for:
-
-- Doctor Service
-- Booking Service
-- useDebounce Hook
 
 ---
 
