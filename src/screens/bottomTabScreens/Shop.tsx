@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   ActivityIndicator,
   View,
@@ -12,6 +12,9 @@ import { Product } from "../../types/product";
 import CategoryTab from "../../components/CategoryTab";
 import { PRODUCT_CATEGORIES } from "../../constant/dummyData/dummyData";
 import { SCREENS } from "../../constant/screens";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { initializeWishlist, addToWishlist, removeFromWishlist } from "../../redux/slice/wishlist";
+import { toast } from "../../utils/toast";
 
 const ShopScreen = ({ navigation }: any) => {
 
@@ -26,15 +29,41 @@ const ShopScreen = ({ navigation }: any) => {
     setCategory,
   } = useProducts();
 
+  const dispatch = useAppDispatch();
+  const wishlistItems = useAppSelector(state => state.wishlist.items);
+
+  // Initialize wishlist from storage
+  useEffect(() => {
+    dispatch(initializeWishlist());
+  }, [dispatch]);
+
+  const handleWishlistToggle = useCallback((product: Product) => {
+    const isWishlisted = wishlistItems.some(item => item.id === product.id);
+    
+    if (isWishlisted) {
+      dispatch(removeFromWishlist(product.id));
+      toast.error("Removed from wishlist");
+    } else {
+      dispatch(addToWishlist(product));
+      toast.success("Added to wishlist");
+    }
+  }, [wishlistItems, dispatch]);
+
   const renderItem = useCallback(
-    ({ item }: { item: Product }) => (
-      <ProductCard
-        product={item}
-        onPress={() => navigation.navigate(SCREENS.PRODUCT_DETAILS, { data: item })}
-        onWishlist={() => console.log("toggle wishlist")}
-      />
-    ),
-    []
+    ({ item }: { item: Product }) => {
+      const isWishlisted = wishlistItems.some(w => w.id === item.id);
+      
+      return (
+        <ProductCard
+          product={item}
+          onPress={() => navigation.navigate(SCREENS.PRODUCT_DETAILS, { data: item })}
+          onWishlist={() => handleWishlistToggle(item)}
+          isWishlisted={isWishlisted}
+          heartIcon={true}
+        />
+      );
+    },
+    [wishlistItems, navigation, handleWishlistToggle]
   );
 
   return (

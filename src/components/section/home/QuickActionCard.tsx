@@ -42,7 +42,8 @@ const QuickActionCard = ({
         style={[
           styles.title,
 
-        ]}>
+        ]}
+        >
         {title}
       </AppText>
 
@@ -52,7 +53,8 @@ const QuickActionCard = ({
           {
             color: colors.textSecondary,
           },
-        ]}>
+        ]}         
+        numberOfLines={1}>
         {subtitle}
       </AppText>
     </TouchableOpacity>
@@ -68,7 +70,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: 18,
     alignItems: 'center',
-    marginBottom: 10
+    marginBottom: 10,
+    padding: 4
   },
 
   title: {

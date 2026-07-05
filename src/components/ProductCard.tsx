@@ -17,12 +17,16 @@ interface Props {
     product: Product;
     onPress: () => void;
     onWishlist: () => void;
+    isWishlisted?: boolean;
+    heartIcon?: boolean
 }
 
 const ProductCard = ({
     product,
     onPress,
     onWishlist,
+    isWishlisted = false,
+    heartIcon
 }: Props) => {
     const { colors } = useAppTheme()
 
@@ -55,14 +59,16 @@ const ProductCard = ({
                         ₹ {product.price}
                     </AppText>
                 </View>
+                {heartIcon ?
+                    <TouchableOpacity onPress={onWishlist}>
+                        <Heart
+                            size={22}
+                            color={isWishlisted ? "#EF4444" : colors.textSecondary}
+                            fill={isWishlisted ? "#EF4444" : "none"}
+                        />
+                    </TouchableOpacity> : null
+                }
 
-                <TouchableOpacity onPress={onWishlist}>
-                    <Heart
-                        size={22}
-                        // stroke={1}
-                        color={APP_COLORS.PRIMARY}
-                    />
-                </TouchableOpacity>
             </View>
         </Pressable>
     );
