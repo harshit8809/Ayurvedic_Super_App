@@ -260,12 +260,6 @@ npm run ios
 
 ---
 
-# 📸 Screenshots
-
-> Add screenshots here if required.
-
----
-
 # 👨‍💻 Author
 
 Harshit Kumar
