@@ -65,12 +65,12 @@ export default memo(QuickActionCard);
 
 const styles = StyleSheet.create({
   card: {
-    width: '31%',
+    width: '48%',
     borderRadius: 16,
     borderWidth: 1,
     paddingVertical: 18,
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 12,
     padding: 4
   },
 

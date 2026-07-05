@@ -14,10 +14,12 @@ import { quickActions } from '../../constant/dummyData/dummyData';
 import { SCREENS } from '../../constant/screens';
 import { fetchDoctors } from '../../services/doctor.service';
 import { fetchProducts } from '../../services/product.service';
+import AppText from '../../components/AppText';
+import { useAppSelector } from '../../redux/hooks';
 
 const HomeScreen = ({ navigation }: any) => {
-  const [search, setSearch] = useState('');
   const { colors } = useAppTheme();
+  const mode = useAppSelector((s) => s?.theme?.mode)
 
   useEffect(() => {
     fetchDoctors(1);
@@ -31,6 +33,7 @@ const HomeScreen = ({ navigation }: any) => {
 
       <GreetingHeader />
       {/* <SearchBar search={search} setSearch={setSearch} /> */}
+      <AppText>App theme: {mode}</AppText>
       <Divider height={20} />
       <SectionHeader title="Quick Actions" />
       <Divider height={20} />
