@@ -9,7 +9,6 @@ import SectionHeader from '../../components/section/SectionHeader';
 import Divider from '../../components/section/Divider';
 import SearchBar from '../../components/elements/SearchBar';
 import QuickActionCard from '../../components/section/home/QuickActionCard';
-import UpcomingConsultationCard from '../../components/section/home/UpcomingConsultationCard';
 import GreetingHeader from '../../components/section/home/GreetingHeader';
 import { quickActions } from '../../constant/dummyData/dummyData';
 import { SCREENS } from '../../constant/screens';
@@ -17,7 +16,7 @@ import { SCREENS } from '../../constant/screens';
 const HomeScreen = ({ navigation }: any) => {
   const [search, setSearch] = useState('');
   const { colors } = useAppTheme();
-  
+
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}
@@ -30,7 +29,7 @@ const HomeScreen = ({ navigation }: any) => {
       <Divider height={20} />
 
       <View style={styles.quickActionContainer}>
-        {quickActions.map(item => {
+        {quickActions.map((item) => {
           const Icon = item.Icon;
           return (
             <QuickActionCard
@@ -38,15 +37,19 @@ const HomeScreen = ({ navigation }: any) => {
               title={item.title}
               subtitle={item.subtitle}
               icon={<Icon size={28} color={colors.primary} />}
-              onPress={() => navigation.navigate(SCREENS.TAB, { screen: item.screen })}
+              onPress={() => {
+                if (item.navigator === "tab") {
+                  navigation.navigate(SCREENS.TAB, {
+                    screen: item.screen,
+                  });
+                } else {
+                  navigation.navigate(item.screen);
+                }
+              }}
             />
           );
         })}
       </View>
-
-      <SectionHeader title="Upcoming Consultation" />
-      <Divider height={20} />
-      <UpcomingConsultationCard />
     </ScrollView>
   );
 };
@@ -63,8 +66,8 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   quickActionContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 28,
-  },
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  }
 });

@@ -1,4 +1,4 @@
-import { FileText, ShoppingBag, Stethoscope } from "lucide-react-native";
+import { FileText, ShoppingBag, Stethoscope, Timeline, Timer, Watch } from "lucide-react-native";
 import { SCREENS } from "../screens";
 
 export const quickActions = [
@@ -8,6 +8,8 @@ export const quickActions = [
     subtitle: "Book Doctors",
     Icon: Stethoscope,
     screen: SCREENS.CONSULTATION,
+    navigator: "tab",
+
   },
   {
     id: "shop",
@@ -15,6 +17,8 @@ export const quickActions = [
     subtitle: "Buy Products",
     Icon: ShoppingBag,
     screen: SCREENS.SHOP,
+    navigator: "tab",
+
   },
   {
     id: "records",
@@ -22,6 +26,16 @@ export const quickActions = [
     subtitle: "Health History",
     Icon: FileText,
     screen: SCREENS.RECORDS,
+    navigator: "tab",
+
+  },
+  {
+    id: "booking",
+    title: "Bookings",
+    subtitle: "Upcoming Consultation",
+    Icon: Timer,
+    screen: SCREENS.MY_BOOKINGS,
+    navigator: "stack",
   },
 ];
 

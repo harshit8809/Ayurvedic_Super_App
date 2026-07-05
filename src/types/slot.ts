@@ -3,4 +3,5 @@ export interface Slot {
   date: string;
   time: string;
   isBooked: boolean;
+  isExpired?: boolean;
 }

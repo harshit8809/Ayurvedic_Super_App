@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { View, ActivityIndicator, StyleSheet, Image, ScrollView } from "react-native";
 import { fetchDoctorById } from "../../services/doctor.service";
 import BaseBtn from "../../components/elements/BaseBtn";
@@ -7,13 +7,23 @@ import { Slot } from "../../types/slot";
 import { bookAppointment } from "../../services/booking.service";
 import SlotSection from "../../components/section/consultation/SlotSection";
 import InfoSection from "../../components/section/consultation/InfoSection";
+import { isSlotSelectable } from "../../utils/slotUtils";
+import { toast } from "../../utils/toast";
+import { SCREENS } from "../../constant/screens";
+import { useNavigation } from "@react-navigation/native";
+import { useAppDispatch } from "../../redux/hooks";
+import { addBooking } from "../../redux/slice/bookings";
 
 const DoctorDetails = ({ route }: any) => {
     const { doctorId } = route.params;
     const { bottom } = useSafeAreaInsets()
+    const navigation = useNavigation<any>()
+    const dispatch = useAppDispatch();
     const [doctor, setDoctor] = useState<any>(null);
     const [loading, setLoading] = useState(true);
-    const [selectedSlot, setSelectedSlot] = useState<Slot | null>(null);
+    const [booking, setBooking] = useState(false);
+
+    const [selectedSlot, setSelectedSlot] = useState<any>(null);
 
     useEffect(() => {
         loadDoctor();
@@ -46,23 +56,46 @@ const DoctorDetails = ({ route }: any) => {
         );
     }, [doctor]);
 
-    const handleBook = () => {
+    const handleBook = async () => {
         if (!selectedSlot) {
             return;
         }
-        bookAppointment({
-            id: Date.now().toString(),
-            doctorId: doctor.id,
-            patientName: "Harshit",
-            slotId: selectedSlot.id,
-            appointmentDate:
-                selectedSlot.date,
-            appointmentTime:
-                selectedSlot.time,
-            status: "UPCOMING",
-        });
-
+        try {
+            const newBooking = {
+                id: Date.now().toString(),
+                doctorId: doctor.id,
+                patientName: "Harshit",
+                slotId: selectedSlot.id,
+                appointmentDate:
+                    selectedSlot.date,
+                appointmentTime:
+                    selectedSlot.time,
+                status: "UPCOMING" as const,
+            };
+            bookAppointment(newBooking);
+            dispatch(addBooking(newBooking));
+            toast.success("Booking Success")
+            navigation.navigate(SCREENS.MY_BOOKINGS);
+        } catch (error) {
+            toast.error("Booking Failed")
+            console.log(error)
+        } finally {
+            setBooking(false);
+        }
     }
+
+
+    const handleSelectSlot = useCallback((slot: Slot) => {
+        if (!isSlotSelectable(slot)) {
+            if (slot.isExpired) {
+                toast.error('This slot has expired');
+            } else {
+                toast.error('This slot is already booked');
+            }
+            return;
+        }
+        setSelectedSlot(slot);
+    }, []);
 
     if (loading) {
         return <ActivityIndicator />
@@ -84,14 +117,16 @@ const DoctorDetails = ({ route }: any) => {
                 <SlotSection
                     groupedSlots={groupedSlots}
                     selectedSlot={selectedSlot}
-                    onSelectSlot={setSelectedSlot}
+                    onSelectSlot={handleSelectSlot}
                 />
             </ScrollView>
 
             <BaseBtn
                 title="Book Appointment"
                 disabled={!selectedSlot}
+                loading={booking}
                 onPress={handleBook}
+                accessibilityLabel={"Book Appointment"}
             />
         </View>
     );

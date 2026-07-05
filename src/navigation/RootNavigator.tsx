@@ -5,6 +5,7 @@ import { SCREENS } from '../constant/screens'
 import BottomTabs from './BottomTabs'
 import { useAppTheme } from '../theme/ThemeProvider'
 import DoctorDetails from '../screens/consultation/DoctorDetails'
+import MyBookings from '../screens/consultation/MyBookings'
 
 const Stack = createNativeStackNavigator()
 
@@ -23,6 +24,12 @@ const AppRoutes = () => {
                 <Stack.Screen name={SCREENS.DOCTOR_DETAILS} component={DoctorDetails}
                     options={{
                         title: 'Details',
+                    }}
+                />
+
+                <Stack.Screen name={SCREENS.MY_BOOKINGS} component={MyBookings}
+                    options={{
+                        title: 'My Bookings',
                     }}
                 />
             </Stack.Navigator>

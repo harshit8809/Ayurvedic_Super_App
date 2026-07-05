@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './slice/appTheme';
+import bookingsReducer from './slice/bookings';
 
 export const store = configureStore({
   reducer: {
     theme: themeReducer,
+    bookings: bookingsReducer,
   },
 
   middleware: getDefaultMiddleware =>
