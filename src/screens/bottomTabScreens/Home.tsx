@@ -1,30 +1,3 @@
-// import { StyleSheet, Text, View } from 'react-native'
-// import React from 'react'
-// import { useAppTheme } from '../../theme/ThemeProvider';
-// import AppText from '../../components/AppText';
-
-// const HomeScreen = () => {
-//   const { colors } = useAppTheme();
-//   console.log('theme', colors);
-//   return (
-//     <View>
-//       <AppText style={styles.text}>HomeScreen</AppText>
-//     </View>
-//   )
-// }
-
-// export default HomeScreen
-
-// const styles = StyleSheet.create({
-//   text: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//   },
-// })
-
-
-
-
 import React, { useState } from 'react';
 import {
   ScrollView,
@@ -44,9 +17,7 @@ import { SCREENS } from '../../constant/screens';
 const HomeScreen = ({ navigation }: any) => {
   const [search, setSearch] = useState('');
   const { colors } = useAppTheme();
-
-  // console.log('search--', search);
-
+  
   return (
     <ScrollView
       showsVerticalScrollIndicator={false}

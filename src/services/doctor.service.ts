@@ -1,4 +1,3 @@
-import { Doctor } from "../types/doctor";
 import { DoctorDetails } from "../types/doctorDetails";
 import { generateDoctorDetails } from "../utils/doctorDetailsGenerator";
 import { generateDoctors } from "../utils/doctorGenerator";

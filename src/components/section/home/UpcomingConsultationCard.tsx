@@ -10,7 +10,13 @@ import { CalendarDays } from 'lucide-react-native';
 import { useAppTheme } from '../../../theme/ThemeProvider';
 import AppText from '../../AppText';
 
+// interface Props {
+    //     consultation: any;
+    // }
 
+    // const UpcomingConsultationCard = ({
+    //     consultation,
+    // }: Props) => {
 const UpcomingConsultationCard = () => {
     const { colors } = useAppTheme();
 
