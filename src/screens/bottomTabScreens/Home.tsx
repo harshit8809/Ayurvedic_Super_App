@@ -7,15 +7,14 @@ import {
 import { useAppTheme } from '../../theme/ThemeProvider';
 import SectionHeader from '../../components/section/SectionHeader';
 import Divider from '../../components/section/Divider';
-import SearchBar from '../../components/elements/SearchBar';
 import QuickActionCard from '../../components/section/home/QuickActionCard';
 import GreetingHeader from '../../components/section/home/GreetingHeader';
 import { quickActions } from '../../constant/dummyData/dummyData';
 import { SCREENS } from '../../constant/screens';
-import { fetchDoctors } from '../../services/doctor.service';
-import { fetchProducts } from '../../services/product.service';
 import AppText from '../../components/AppText';
 import { useAppSelector } from '../../redux/hooks';
+import { fetchDoctors } from '../../services/doctor.service';
+import { fetchProducts } from '../../services/product.service';
 
 const HomeScreen = ({ navigation }: any) => {
   const { colors } = useAppTheme();

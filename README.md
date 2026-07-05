@@ -77,8 +77,7 @@ src
 ├── services
 ├── theme
 ├── types
-├── utils
-└── assets
+└── utils
 ```
 
 Major architectural principles:
