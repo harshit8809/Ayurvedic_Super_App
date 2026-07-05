@@ -42,7 +42,7 @@ export const quickActions = [
     title: "Wishlist",
     subtitle: "Your Picks",
     Icon: Heart,
-    screen: SCREENS.MY_BOOKINGS,
+    screen: SCREENS.WISHLIST_SCREEN,
     navigator: "stack",
   },
 ];

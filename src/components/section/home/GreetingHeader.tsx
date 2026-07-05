@@ -13,7 +13,7 @@ const GreetingHeader = () => {
                     color: colors.textSecondary,
                 },
             ]}>
-                Good Morning 👋
+                Hello 👋
             </AppText>
 
             <AppText style={styles.title}>

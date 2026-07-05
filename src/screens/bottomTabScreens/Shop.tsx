@@ -71,7 +71,7 @@ const ShopScreen = ({ navigation }: any) => {
     <View
       style={{
         flex: 1,
-        padding: 15,
+        padding: 10,
       }}
     >
       <SearchBar

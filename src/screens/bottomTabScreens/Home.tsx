@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ScrollView,
   StyleSheet,
@@ -12,10 +12,17 @@ import QuickActionCard from '../../components/section/home/QuickActionCard';
 import GreetingHeader from '../../components/section/home/GreetingHeader';
 import { quickActions } from '../../constant/dummyData/dummyData';
 import { SCREENS } from '../../constant/screens';
+import { fetchDoctors } from '../../services/doctor.service';
+import { fetchProducts } from '../../services/product.service';
 
 const HomeScreen = ({ navigation }: any) => {
   const [search, setSearch] = useState('');
   const { colors } = useAppTheme();
+
+  useEffect(() => {
+    fetchDoctors(1);
+    fetchProducts(1);
+  }, []);
 
   return (
     <ScrollView
@@ -23,7 +30,7 @@ const HomeScreen = ({ navigation }: any) => {
       contentContainerStyle={styles.content}>
 
       <GreetingHeader />
-      <SearchBar search={search} setSearch={setSearch} />
+      {/* <SearchBar search={search} setSearch={setSearch} /> */}
       <Divider height={20} />
       <SectionHeader title="Quick Actions" />
       <Divider height={20} />
@@ -62,7 +69,7 @@ const styles = StyleSheet.create({
   },
 
   content: {
-    padding: 20,
+    padding: 10,
     paddingBottom: 50,
   },
   quickActionContainer: {
