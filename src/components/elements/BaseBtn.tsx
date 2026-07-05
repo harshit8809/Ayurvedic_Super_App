@@ -50,6 +50,7 @@ import {
   ViewStyle,
 } from "react-native";
 import { useAppTheme } from "../../theme/ThemeProvider";
+import AppText from "../AppText";
 
 interface BaseBtnProps extends TouchableOpacityProps {
   title: string;
@@ -106,9 +107,9 @@ const BaseBtn = ({
         <>
           {leftIcon}
 
-          <Text style={[styles.buttonText, textStyle]}>
+          <AppText style={[styles.buttonText, textStyle]}>
             {title}
-          </Text>
+          </AppText>
 
           {rightIcon}
         </>
@@ -131,7 +132,6 @@ const styles = StyleSheet.create({
   },
 
   buttonText: {
-    color: "#FFF",
     fontWeight: "600",
     fontSize: 16,
   },

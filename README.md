@@ -1,97 +1,283 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🌿 Ayurvedic Super App
 
-# Getting Started
+A React Native application developed as part of a technical assessment.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+The application demonstrates scalable React Native architecture, offline-ready patterns, pagination, reusable components, search, filtering, booking flow, and e-commerce module implementation using mocked services.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+# 📱 Modules Implemented
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## ✅ Module 1 – Consultation
 
-```sh
-# Using npm
+Implemented features:
+
+- Doctor Listing
+- Pagination (Infinite Scroll)
+- Search with Debouncing
+- Filter by Specialization
+- Doctor Details Screen
+- Available Slot Selection
+- Appointment Booking Flow
+- Upcoming Booking Service
+- Booking Cancellation Service (Business Logic)
+- Slot Validation
+  - Booked Slot
+  - Expired Slot
+  - Slot Conflict Prevention
+  - Double Booking Prevention
+
+---
+
+## ✅ Module 2 – Shop (Partially Implemented)
+
+Implemented features:
+
+- Product Listing
+- Infinite Scroll
+- Search
+- Category Filter
+- Responsive Product Grid
+- Reusable Product Card
+
+Planned (Not Completed):
+
+- Product Details
+- Cart
+- Quantity Update
+- Wishlist
+- Checkout Summary
+- Local Cart Persistence
+
+---
+
+## 🚧 Module 3 – Health Records
+
+Not yet implemented.
+
+Planned features:
+
+- Health Record Listing
+- Search
+- Filter
+- Details Screen
+
+---
+
+# 🏗️ Architecture
+
+The project follows a modular structure with clear separation of concerns.
+
+```
+src
+│
+├── components
+├── constant
+├── customHooks
+├── navigation
+├── screens
+├── services
+├── theme
+├── types
+├── utils
+└── assets
+```
+
+Major architectural principles:
+
+- Reusable Components
+- Separation of Business Logic
+- Mock Service Layer
+- Custom Hooks
+- Reusable UI Components
+- Scalable Folder Structure
+
+---
+
+# ⚙️ Technologies Used
+
+## Framework
+
+- React Native 0.86
+
+## Language
+
+- TypeScript
+
+## Navigation
+
+- React Navigation v7
+
+## State Management
+
+- React Hooks
+
+## Lists
+
+- FlashList (@shopify/flash-list)
+
+## Local Storage
+
+- MMKV (Prepared for future persistence)
+
+## Icons
+
+- lucide-react-native
+
+## Safe Area
+
+- react-native-safe-area-context
+
+## Mock Data
+
+- @faker-js/faker
+
+---
+
+# 🚀 Features Implemented
+
+## Doctor Module
+
+- Infinite Pagination
+- Debounced Search
+- Category Filtering
+- Dynamic Doctor Details
+- Dynamic Slot Generation
+- Slot Selection
+- Booking Service
+- Booking Validation
+
+---
+
+## Product Module
+
+- Infinite Pagination
+- Search
+- Category Filter
+- Responsive Grid Layout
+
+---
+
+# 📦 Reusable Components
+
+Some reusable UI components developed during the assignment:
+
+- BaseBtn
+- SearchBar
+- CategoryTab
+- DoctorCard
+- ProductCard
+- SectionHeader
+- Divider
+- GreetingHeader
+- QuickActionCard
+- SlotSection
+- InfoSection
+
+---
+
+# 🔧 Custom Hooks
+
+- useDoctors
+- useProducts
+- useDebounce
+
+---
+
+# 📚 Services
+
+- doctor.service.ts
+- booking.service.ts
+- product.service.ts
+
+These services simulate API behaviour with pagination, filtering, searching and booking logic.
+
+---
+
+# 🧪 Unit Testing
+
+Basic Jest test cases were added for:
+
+- Doctor Service
+- Booking Service
+- useDebounce Hook
+
+---
+
+# 📈 Performance Optimizations
+
+- FlashList for rendering large datasets
+- Memoized Components using React.memo
+- useCallback
+- useMemo
+- Debounced Search
+- Infinite Scrolling
+- Pagination
+- Component Reusability
+
+---
+
+# 📋 Assumptions
+
+Since no backend APIs were provided, mocked service layers were created using Faker.js to simulate production-like API behaviour.
+
+The application is designed so that the mocked services can be replaced with real REST APIs with minimal changes.
+
+---
+
+# ⚠️ Limitations
+
+Due to the time constraints of the assessment, not all requested modules and features were completed.
+
+The focus was placed on:
+
+- Clean Architecture
+- Reusable Components
+- Business Logic
+- Performance
+- Scalability
+- Maintainability
+
+The remaining features can be integrated on top of the existing architecture without major structural changes.
+
+---
+
+# ▶️ Running the Project
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Start Metro
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+Run Android
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
-
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+Run iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
+```bash
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+---
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+# 📸 Screenshots
 
-## Step 3: Modify your app
+> Add screenshots here if required.
 
-Now that you have successfully run the app, let's make changes!
+---
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+# 👨‍💻 Author
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Harshit Kumar
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+React Native Developer

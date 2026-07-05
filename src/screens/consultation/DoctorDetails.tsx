@@ -75,7 +75,7 @@ const DoctorDetails = ({ route }: any) => {
             bookAppointment(newBooking);
             dispatch(addBooking(newBooking));
             toast.success("Booking Success")
-            navigation.navigate(SCREENS.MY_BOOKINGS);
+            navigation.replace(SCREENS.MY_BOOKINGS);
         } catch (error) {
             toast.error("Booking Failed")
             console.log(error)
